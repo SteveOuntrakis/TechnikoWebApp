@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
+import com.europeandynamics.technikowebapp.model.Admin;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,12 +11,12 @@ import java.util.Optional;
  */
 public interface Service<T, K> {
 
-    Optional<T> getById(K id);
+    T getById(K id, Class<T> entityClass);
 
     List<T> getAll(Class<T> entityClass);
 
     Optional<T> save(T t);
 
-    boolean deleteById(K id);
+    boolean deleteById(K id, Class<T> entityClass);
 
 }

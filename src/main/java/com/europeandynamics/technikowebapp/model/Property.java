@@ -21,7 +21,7 @@ public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long propertyId;
+    private Long id;
 
     @Column( nullable = false)
     private String address;

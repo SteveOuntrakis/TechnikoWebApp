@@ -9,11 +9,11 @@ import java.util.Optional;
  */
 public interface Repository<T, K> {
 
-    Optional<T> findById(K id);
+    T findById(K id,Class<T> entityClass);
 
     List<T> findAll(Class<T> entityClass);
 
     Optional<T> save(T t);
 
-    boolean deleteById(K id);
+    boolean deleteById(K id,Class<T> entityClass);
 }

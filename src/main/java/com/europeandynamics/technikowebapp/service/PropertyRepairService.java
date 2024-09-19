@@ -14,21 +14,8 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
     @Named("PropertyRepairRepo")
     private Repository<PropertyRepair, Long> repository;
 
-    @Override
-    public Optional<PropertyRepair> getById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 
-    @Override
-    public Optional<PropertyRepair> save(PropertyRepair t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 //    public List<PropertyRepair> findPendingRepairs(Status status) {
 //        try {
@@ -60,6 +47,21 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
 
     @Override
     public List<PropertyRepair> getAll(Class<PropertyRepair> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean deleteById(Long id, Class<PropertyRepair> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public PropertyRepair getById(Long id, Class<PropertyRepair> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Optional<PropertyRepair> save(PropertyRepair t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

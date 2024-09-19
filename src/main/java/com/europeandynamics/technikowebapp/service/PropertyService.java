@@ -1,7 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
 import com.europeandynamics.technikowebapp.model.Property;
-import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -14,21 +13,6 @@ public class PropertyService implements Service<Property, Long> {
     @Named("PropertyRepo")
     private Repository<Property, Long> repository;
 
-    @Override
-    public Optional<Property> getById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-
-    @Override
-    public Optional<Property> save(Property t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 //    public List<Property> findPropertiesByUserID(Long id) {
 //        try {
@@ -50,6 +34,21 @@ public class PropertyService implements Service<Property, Long> {
 
     @Override
     public List<Property> getAll(Class<Property> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean deleteById(Long id, Class<Property> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Property getById(Long id, Class<Property> entityClass) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Optional<Property> save(Property t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

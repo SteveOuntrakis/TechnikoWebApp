@@ -18,7 +18,7 @@ public class PropertyOwner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ownerId;
+    private Long id;
 
     @Column(unique = true, nullable = false)
     private String vatNumber;

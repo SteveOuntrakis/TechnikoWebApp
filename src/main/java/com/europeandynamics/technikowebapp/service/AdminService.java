@@ -18,8 +18,8 @@ public class AdminService implements Service<Admin,Long> {
     private Repository<Admin,Long> repository;
 
     @Override
-    public Optional<Admin> getById(Long id) {
-        return repository.findById(id);
+    public Admin getById(Long id,Class<Admin> admin) {
+        return repository.findById(id,admin);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class AdminService implements Service<Admin,Long> {
     }
 
     @Override
-    public boolean deleteById(Long id) {
-        return repository.deleteById(id);
+    public boolean deleteById(Long id,Class<Admin> admin) {
+        return repository.deleteById(id,admin);
     }
 }

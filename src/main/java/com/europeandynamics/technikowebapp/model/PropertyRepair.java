@@ -20,7 +20,7 @@ public class PropertyRepair {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long repairId;
+    private Long id;
 
     @Column(nullable = false)
     private RepairType repairType;
