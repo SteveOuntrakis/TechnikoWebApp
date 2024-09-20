@@ -1,7 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
 import com.europeandynamics.technikowebapp.model.PropertyRepair;
-import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -46,23 +45,28 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
 //    }
 
     @Override
-    public List<PropertyRepair> getAll(Class<PropertyRepair> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PropertyRepair getById(Long id,Class<PropertyRepair> propertyRepair) {
+        return repository.findById(id,propertyRepair);
     }
 
     @Override
-    public boolean deleteById(Long id, Class<PropertyRepair> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<PropertyRepair> getAll(Class<PropertyRepair> propertyRepair) {
+        return repository.findAll(propertyRepair);
     }
 
     @Override
-    public PropertyRepair getById(Long id, Class<PropertyRepair> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PropertyRepair save(PropertyRepair propertyRepair) {
+        return repository.save(propertyRepair);
     }
 
     @Override
-    public Optional<PropertyRepair> save(PropertyRepair t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean deleteById(Long id,Class<PropertyRepair> propertyRepair) {
+        return repository.deleteById(id,propertyRepair);
+    }
+
+    @Override
+    public PropertyRepair findOwnerByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

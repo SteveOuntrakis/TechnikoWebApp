@@ -6,20 +6,19 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
-import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequestScoped
-public class AdminService implements Service<Admin,Long> {
+public class AdminService implements Service<Admin, Long> {
 
     @Inject
     @Named("AdminRepo")
-    private Repository<Admin,Long> repository;
+    private Repository<Admin, Long> repository;
 
     @Override
-    public Admin getById(Long id,Class<Admin> admin) {
-        return repository.findById(id,admin);
+    public Admin getById(Long id, Class<Admin> admin) {
+        return repository.findById(id, admin);
     }
 
     @Override
@@ -28,12 +27,17 @@ public class AdminService implements Service<Admin,Long> {
     }
 
     @Override
-    public Optional<Admin> save(Admin admin) {
+    public Admin save(Admin admin) {
         return repository.save(admin);
     }
 
     @Override
-    public boolean deleteById(Long id,Class<Admin> admin) {
-        return repository.deleteById(id,admin);
+    public boolean deleteById(Long id, Class<Admin> admin) {
+        return repository.deleteById(id, admin);
+    }
+
+    @Override
+    public Admin findOwnerByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

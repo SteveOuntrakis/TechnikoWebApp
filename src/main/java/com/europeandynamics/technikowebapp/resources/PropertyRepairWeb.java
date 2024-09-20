@@ -1,6 +1,6 @@
 package com.europeandynamics.technikowebapp.resources;
 
-import com.europeandynamics.technikowebapp.model.Admin;
+import com.europeandynamics.technikowebapp.model.PropertyRepair;
 import com.europeandynamics.technikowebapp.service.Service;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -16,39 +16,39 @@ import lombok.extern.slf4j.Slf4j;
 
 @Path("")
 @Slf4j
-public class AdminWeb {
+public class PropertyRepairWeb {
 
     @Inject
-    private Service<Admin, Long> eshopService;
+    private Service<PropertyRepair, Long> eshopService;
 
-    @Path("admin")
+    @Path("propertyRepair")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Admin> getAll() {
-        return eshopService.getAll(Admin.class);
+    public List<PropertyRepair> getAll() {
+        return eshopService.getAll(PropertyRepair.class);
     }
 
-    @Path("admin/{id}")
+    @Path("propertyRepair/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Admin getById(@PathParam("id") Long id) {
-        return eshopService.getById(id, Admin.class);
+    public PropertyRepair getById(@PathParam("id") Long id) {
+        return eshopService.getById(id, PropertyRepair.class);
     }
 
-    @Path("admin")
+    @Path("propertyRepair")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Admin save(Admin admin) {
-        return eshopService.save(admin);
+    public PropertyRepair save(PropertyRepair propertyRepair) {
+        return eshopService.save(propertyRepair);
     }
 
-    @Path("admin/{adminId}")
+    @Path("propertyRepair/{id}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean deleteById(@PathParam("adminId") long adminID) {
-        return eshopService.deleteById(adminID, Admin.class);
+    public boolean deleteById(@PathParam("id") long id) {
+        return eshopService.deleteById(id, PropertyRepair.class);
     }
 }

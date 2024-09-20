@@ -1,6 +1,7 @@
 package com.europeandynamics.technikowebapp.model;
 
 import com.europeandynamics.technikowebapp.model.enums.PropertyType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,13 +18,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Property {
+public class Property implements BaseModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String address;
 
     private int yearOfConstruction;
@@ -31,10 +32,11 @@ public class Property {
     @Column(nullable = false)
     private PropertyType propertyType;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "propertyOwner_id", nullable = false)  
     private PropertyOwner owner;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "property", orphanRemoval = true)
+    @JsonIgnore
     private Set<PropertyRepair> repairs;
 }

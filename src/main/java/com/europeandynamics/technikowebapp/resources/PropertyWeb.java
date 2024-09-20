@@ -1,6 +1,6 @@
 package com.europeandynamics.technikowebapp.resources;
 
-import com.europeandynamics.technikowebapp.model.Admin;
+import com.europeandynamics.technikowebapp.model.Property;
 import com.europeandynamics.technikowebapp.service.Service;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -16,39 +16,39 @@ import lombok.extern.slf4j.Slf4j;
 
 @Path("")
 @Slf4j
-public class AdminWeb {
+public class PropertyWeb {
 
     @Inject
-    private Service<Admin, Long> eshopService;
+    private Service<Property, Long> eshopService;
 
-    @Path("admin")
+    @Path("property")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Admin> getAll() {
-        return eshopService.getAll(Admin.class);
+    public List<Property> getAll() {
+        return eshopService.getAll(Property.class);
     }
 
-    @Path("admin/{id}")
+    @Path("property/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Admin getById(@PathParam("id") Long id) {
-        return eshopService.getById(id, Admin.class);
+    public Property getById(@PathParam("id") Long id) {
+        return eshopService.getById(id, Property.class);
     }
 
-    @Path("admin")
+    @Path("property")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Admin save(Admin admin) {
-        return eshopService.save(admin);
+    public Property save(Property property) {
+        return eshopService.save(property);
     }
 
-    @Path("admin/{adminId}")
+    @Path("property/{id}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean deleteById(@PathParam("adminId") long adminID) {
-        return eshopService.deleteById(adminID, Admin.class);
+    public boolean deleteById(@PathParam("id") long id) {
+        return eshopService.deleteById(id, Property.class);
     }
 }

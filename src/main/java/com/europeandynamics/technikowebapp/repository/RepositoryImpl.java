@@ -1,11 +1,11 @@
 package com.europeandynamics.technikowebapp.repository;
 
+import com.europeandynamics.technikowebapp.model.BaseModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,14 +16,14 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
 
     @Override
     @Transactional
-    public T findById(K id,Class<T> entityClass) {
-          try {
+    public T findById(K id, Class<T> entityClass) {
+        try {
             T t = entityManager.find(entityClass, id);
             return t;
         } catch (Exception e) {
             log.debug("An exception occured");
-            return null;  
-        }   
+            return null;
+        }
     }
 
     @Override
@@ -35,15 +35,19 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
 
     @Override
     @Transactional
-    public Optional<T> save(T t) {
-        entityManager.persist(t);
-        return Optional.of(t);
+    public <T extends BaseModel> T save(T t) {
+        if (t.getId() == null) {
+            entityManager.persist(t);
+        } else {
+            t = entityManager.merge(t);
+        }
+        return t;
     }
-    
+
     @Override
     @Transactional
     public boolean deleteById(K id, Class<T> entityClass) {
-        
+
         T persistentInstance = entityManager.find(entityClass, id);
         if (persistentInstance != null) {
             log.info("all ok");
@@ -51,8 +55,12 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
             return true;
         }
         log.info("something happened");
-        return false;   
+        return false;
     }
-    
+
+    @Override
+    public List<T> findAllByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    } 
 
 }

@@ -1,8 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
-import com.europeandynamics.technikowebapp.model.Admin;
 import java.util.List;
-import java.util.Optional;
 
 /**
  *
@@ -15,8 +13,10 @@ public interface Service<T, K> {
 
     List<T> getAll(Class<T> entityClass);
 
-    Optional<T> save(T t);
+    T save(T t);
 
     boolean deleteById(K id, Class<T> entityClass);
+    
+    T findOwnerByUsername(String username);
 
 }

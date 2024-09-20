@@ -2,6 +2,7 @@ package com.europeandynamics.technikowebapp.model;
 
 import com.europeandynamics.technikowebapp.model.enums.RepairType;
 import com.europeandynamics.technikowebapp.model.enums.Status;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class PropertyRepair {
+public class PropertyRepair implements BaseModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,9 +49,8 @@ public class PropertyRepair {
 
     private Date actualEndDate;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "property_id", nullable = false)
     private Property property;
-
 
 }

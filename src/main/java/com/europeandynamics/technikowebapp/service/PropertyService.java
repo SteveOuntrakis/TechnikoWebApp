@@ -5,7 +5,6 @@ import com.europeandynamics.technikowebapp.repository.Repository;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
-import java.util.Optional;
 
 public class PropertyService implements Service<Property, Long> {
 
@@ -32,24 +31,29 @@ public class PropertyService implements Service<Property, Long> {
 //        }
 //    }
 
-    @Override
-    public List<Property> getAll(Class<Property> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     @Override
+    public Property getById(Long id,Class<Property> property) {
+        return repository.findById(id,property);
     }
 
     @Override
-    public boolean deleteById(Long id, Class<Property> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Property> getAll(Class<Property> property) {
+        return repository.findAll(property);
     }
 
     @Override
-    public Property getById(Long id, Class<Property> entityClass) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Property save(Property property) {
+        return repository.save(property);
     }
 
     @Override
-    public Optional<Property> save(Property t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean deleteById(Long id,Class<Property> property) {
+        return repository.deleteById(id,property);
+    }
+
+    @Override
+    public Property findOwnerByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
