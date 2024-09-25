@@ -17,7 +17,6 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
     @Named("PropertyOwnerRepo")
     private Repository<PropertyOwner, Long> repository;
 
-
     public PropertyOwner findOwnerByUsername(String username) {
         try {
             List<PropertyOwner> owners = repository.findAllByUsername(username);
@@ -50,6 +49,11 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
     public boolean deleteById(Long id, Class<PropertyOwner> propertyOwner) {
         return repository.deleteById(id, propertyOwner);
     }
+    
+    @Override
+    public boolean undeleteById(Long id, Class<PropertyOwner> propertyOwner) {
+        return repository.undeletePostById(id,propertyOwner);
+    }
 
     @Override
     public List<PropertyOwner> findPendingRepairsForID(Status status, Long id) {
@@ -63,12 +67,22 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
 
     @Override
     public List<PropertyOwner> findPendingRepairs(Status status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<PropertyOwner> findAllByPropertyId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public PropertyOwner findAdminByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validateAdminsPassword(String password, PropertyOwner t) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

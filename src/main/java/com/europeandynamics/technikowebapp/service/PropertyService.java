@@ -19,14 +19,14 @@ public class PropertyService implements Service<Property, Long> {
 
     @Override
     public List<Property> findPropertiesByUserID(Long id) {
-            List<Property> properties = repository.findPropertiesByUserID(id);
-            return properties;    
+        List<Property> properties = repository.findPropertiesByUserID(id);
+        return properties;
     }
 
     @Override
-    public Property getById(Long id,Class<Property> property) {
-        return repository.findById(id,property);
-}
+    public Property getById(Long id, Class<Property> property) {
+        return repository.findById(id, property);
+    }
 
     @Override
     public List<Property> getAll(Class<Property> property) {
@@ -39,27 +39,42 @@ public class PropertyService implements Service<Property, Long> {
     }
 
     @Override
-    public boolean deleteById(Long id,Class<Property> property) {
-        return repository.deleteById(id,property);
+    public boolean deleteById(Long id, Class<Property> property) {
+        return repository.deleteById(id, property);
+    }
+
+    @Override
+    public boolean undeleteById(Long id, Class<Property> property) {
+        return repository.undeletePostById(id, property);
     }
 
     @Override
     public Property findOwnerByUsername(String username) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
     public List<Property> findPendingRepairsForID(Status status, Long id) {
-       throw new UnsupportedOperationException("Not supported yet.");
-    }  
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
     @Override
     public List<Property> findPendingRepairs(Status status) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<Property> findAllByPropertyId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Property findAdminByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validateAdminsPassword(String password, Property t) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

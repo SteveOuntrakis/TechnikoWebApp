@@ -17,6 +17,8 @@ public interface Service<T, K> {
     T save(T t);
 
     boolean deleteById(K id, Class<T> entityClass);
+    
+    boolean undeleteById(K id, Class<T> entityClass);
 
     T findOwnerByUsername(String username);
 
@@ -27,4 +29,8 @@ public interface Service<T, K> {
     List<T> findPendingRepairs(Status status);
 
     List<T> findAllByPropertyId(K id);
+
+    T findAdminByUsername(String username);
+
+    boolean validateAdminsPassword(String password, T t);
 }

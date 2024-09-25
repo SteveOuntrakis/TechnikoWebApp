@@ -2,7 +2,9 @@ package com.europeandynamics.technikowebapp.resources;
 
 import com.europeandynamics.technikowebapp.model.PropertyOwner;
 import com.europeandynamics.technikowebapp.service.Service;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -24,6 +26,7 @@ public class PropertyOwnerWeb {
     @Path("propertyOwner")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN", "PROPERTY_OWNER"})
     public List<PropertyOwner> getAll() {
         return eshopService.getAll(PropertyOwner.class);
     }
@@ -48,7 +51,7 @@ public class PropertyOwnerWeb {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PropertyOwner save(PropertyOwner propertyOwner) {
+    public PropertyOwner save(@Valid PropertyOwner propertyOwner) {
         return eshopService.save(propertyOwner);
     }
 

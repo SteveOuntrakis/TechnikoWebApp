@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.repository;
 
+import com.europeandynamics.technikowebapp.exception.DatabaseOperationException;
 import com.europeandynamics.technikowebapp.model.BaseModel;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import jakarta.persistence.EntityManager;
@@ -11,7 +12,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RepositoryImpl<T, K> implements Repository<T, K> {
+public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> {
 
     @PersistenceContext(unitName = "Persistence")
     private EntityManager entityManager;
@@ -21,7 +22,10 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
     public T findById(K id, Class<T> entityClass) {
         try {
             T t = entityManager.find(entityClass, id);
-            return t;
+            if (t != null && !t.isDeleted()) {
+                return t;
+            }
+            return null;
         } catch (Exception e) {
             log.debug("An exception occured");
             return null;
@@ -30,30 +34,49 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
 
     @Override
     @Transactional
-    public List<T> findAll(Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createQuery("from " + entityClass.getName(), entityClass);
-        return query.getResultList();
+    public List<T> findAll(Class<T> t) {
+        try {
+            TypedQuery<T> query = entityManager.createQuery("from " + t.getName(), t);
+            return query.getResultList();
+        }catch (Exception e) {
+            throw new DatabaseOperationException("save",  t.getClass().toString(), e);
+        }
+
     }
 
     @Override
     @Transactional
     public <T extends BaseModel> T save(T t) {
-        if (t.getId() == null) {
+        try{
+             if (t.getId() == null) {
             entityManager.persist(t);
         } else {
             t = entityManager.merge(t);
         }
         return t;
+        }catch (Exception e) {
+            throw new DatabaseOperationException("save", t.getClass().toString(), e);
+        }
+       
     }
-
     @Override
     @Transactional
-    public boolean deleteById(K id, Class<T> entityClass) {
+    public boolean deleteById(K id , Class<T> entityClass) {
+        return setDeletedPostById(id,entityClass, true);
+    }
+    
+    @Override
+    @Transactional
+    public boolean undeletePostById(K id , Class<T> entityClass) {
+        return setDeletedPostById(id,entityClass, false);
+    }
+    
+    private boolean setDeletedPostById(K id, Class<T> entityClass,boolean deleted) {
 
         T persistentInstance = entityManager.find(entityClass, id);
         if (persistentInstance != null) {
             log.info("all ok");
-            entityManager.remove(persistentInstance);
+            persistentInstance.setDeleted(deleted);
             return true;
         }
         log.info("something happened");
@@ -62,36 +85,36 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
 
     @Override
     public List<T> findByUserId(K userId) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<T> findByDateRange(Date startDate, Date endDate) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<T> findPendingRepairs(Status status) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<T> findAllByPropertyId(K propertyId) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<T> findPropertiesByUserID(K userId) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<T> findPendingRepairsForID(Status status, K id) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }    
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
     @Override
     public List<T> findAllByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

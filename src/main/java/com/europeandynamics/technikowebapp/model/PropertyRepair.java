@@ -48,6 +48,9 @@ public class PropertyRepair implements BaseModel{
     private Date actualStartDate;
 
     private Date actualEndDate;
+    
+    @Column(nullable = false)
+    private boolean deleted = false;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "property_id", nullable = false)

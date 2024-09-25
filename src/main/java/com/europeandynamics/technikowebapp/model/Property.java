@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Property implements BaseModel{
+public class Property implements BaseModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +31,12 @@ public class Property implements BaseModel{
 
     @Column(nullable = false)
     private PropertyType propertyType;
+    
+    @Column(nullable = false)
+    private boolean deleted = false;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "propertyOwner_id", nullable = false)  
+    @JoinColumn(name = "propertyOwner_id", nullable = false)
     private PropertyOwner owner;
 
     @OneToMany(mappedBy = "property", orphanRemoval = true)

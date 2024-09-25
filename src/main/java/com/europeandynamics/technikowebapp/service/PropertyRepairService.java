@@ -16,28 +16,28 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
     @Inject
     @Named("PropertyRepairRepo")
     private Repository<PropertyRepair, Long> repository;
-    
+
     public List<PropertyRepair> findPendingRepairs(Status status) {
-     
-            List<PropertyRepair> repairs = repository.findPendingRepairs(status);
-            return repairs;
+
+        List<PropertyRepair> repairs = repository.findPendingRepairs(status);
+        return repairs;
     }
 
     public List<PropertyRepair> findAllByPropertyId(Long id) {
-       
-            List<PropertyRepair> repairs = repository.findAllByPropertyId(id);
-            return repairs;
+
+        List<PropertyRepair> repairs = repository.findAllByPropertyId(id);
+        return repairs;
     }
 
     public List<PropertyRepair> findPendingRepairsForID(Status status, Long id) {
-            List<PropertyRepair> repairs = repository.findPendingRepairsForID(status, id);
-            return repairs;
+        List<PropertyRepair> repairs = repository.findPendingRepairsForID(status, id);
+        return repairs;
     }
 
     @Override
-    public PropertyRepair getById(Long id,Class<PropertyRepair> propertyRepair) {
-        return repository.findById(id,propertyRepair);
-}
+    public PropertyRepair getById(Long id, Class<PropertyRepair> propertyRepair) {
+        return repository.findById(id, propertyRepair);
+    }
 
     @Override
     public List<PropertyRepair> getAll(Class<PropertyRepair> propertyRepair) {
@@ -50,8 +50,13 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
     }
 
     @Override
-    public boolean deleteById(Long id,Class<PropertyRepair> propertyRepair) {
-        return repository.deleteById(id,propertyRepair);
+    public boolean deleteById(Long id, Class<PropertyRepair> propertyRepair) {
+        return repository.deleteById(id, propertyRepair);
+    }
+
+    @Override
+    public boolean undeleteById(Long id, Class<PropertyRepair> propertyRepair) {
+        return repository.undeletePostById(id, propertyRepair);
     }
 
     @Override
@@ -61,6 +66,16 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
 
     @Override
     public List<PropertyRepair> findPropertiesByUserID(Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public PropertyRepair findAdminByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean validateAdminsPassword(String password, PropertyRepair t) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

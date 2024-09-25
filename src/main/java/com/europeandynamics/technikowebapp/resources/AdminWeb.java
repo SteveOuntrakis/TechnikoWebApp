@@ -2,7 +2,9 @@ package com.europeandynamics.technikowebapp.resources;
 
 import com.europeandynamics.technikowebapp.model.Admin;
 import com.europeandynamics.technikowebapp.service.Service;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -23,7 +25,8 @@ public class AdminWeb {
 
     @Path("admin")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)     
+    @RolesAllowed("ADMIN")
     public List<Admin> getAll() {
         return eshopService.getAll(Admin.class);
     }
@@ -40,7 +43,7 @@ public class AdminWeb {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Admin save(Admin admin) {
+    public Admin save(@Valid Admin admin) {
         return eshopService.save(admin);
     }
 

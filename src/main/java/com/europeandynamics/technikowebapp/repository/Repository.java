@@ -14,6 +14,8 @@ public interface Repository<T, K> {
     <T extends BaseModel> T save(T t);
 
     boolean deleteById(K id, Class<T> entityClass);
+    
+    boolean undeletePostById(K id , Class<T> entityClass);
 
     List<T> findAllByUsername(String username);
 
