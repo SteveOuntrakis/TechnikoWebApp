@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
+import com.europeandynamics.technikowebapp.model.enums.Status;
 import java.util.List;
 
 /**
@@ -16,7 +17,14 @@ public interface Service<T, K> {
     T save(T t);
 
     boolean deleteById(K id, Class<T> entityClass);
-    
+
     T findOwnerByUsername(String username);
 
+    List<T> findPendingRepairsForID(Status status, K id);
+
+    List<T> findPropertiesByUserID(K id);
+
+    List<T> findPendingRepairs(Status status);
+
+    List<T> findAllByPropertyId(K id);
 }

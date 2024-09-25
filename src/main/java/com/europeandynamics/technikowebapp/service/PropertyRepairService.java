@@ -1,53 +1,43 @@
 package com.europeandynamics.technikowebapp.service;
 
 import com.europeandynamics.technikowebapp.model.PropertyRepair;
+import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
-import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
+@RequestScoped
 public class PropertyRepairService implements Service<PropertyRepair, Long> {
 
     @Inject
     @Named("PropertyRepairRepo")
     private Repository<PropertyRepair, Long> repository;
+    
+    public List<PropertyRepair> findPendingRepairs(Status status) {
+     
+            List<PropertyRepair> repairs = repository.findPendingRepairs(status);
+            return repairs;
+    }
 
+    public List<PropertyRepair> findAllByPropertyId(Long id) {
+       
+            List<PropertyRepair> repairs = repository.findAllByPropertyId(id);
+            return repairs;
+    }
 
-
-
-//    public List<PropertyRepair> findPendingRepairs(Status status) {
-//        try {
-//            List<PropertyRepair> owners = repository.findPendingRepairs(status);
-//            return owners;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<PropertyRepair> findAllByPropertyId(Long id) {
-//        try {
-//            List<PropertyRepair> owners = repository.findAllByPropertyId(id);
-//            return owners;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//
-//    public List<PropertyRepair> findPendingRepairsForID(Status status, Long id) {
-//        try {
-//            List<PropertyRepair> owners = repository.findPendingRepairsForID(status, id);
-//            return owners;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//
-//    }
+    public List<PropertyRepair> findPendingRepairsForID(Status status, Long id) {
+            List<PropertyRepair> repairs = repository.findPendingRepairsForID(status, id);
+            return repairs;
+    }
 
     @Override
     public PropertyRepair getById(Long id,Class<PropertyRepair> propertyRepair) {
         return repository.findById(id,propertyRepair);
-    }
+}
 
     @Override
     public List<PropertyRepair> getAll(Class<PropertyRepair> propertyRepair) {
@@ -66,6 +56,11 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
 
     @Override
     public PropertyRepair findOwnerByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<PropertyRepair> findPropertiesByUserID(Long id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

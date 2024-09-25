@@ -1,6 +1,7 @@
 package com.europeandynamics.technikowebapp.resources;
 
 import com.europeandynamics.technikowebapp.model.PropertyRepair;
+import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.service.Service;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -34,6 +35,28 @@ public class PropertyRepairWeb {
     @Produces(MediaType.APPLICATION_JSON)
     public PropertyRepair getById(@PathParam("id") Long id) {
         return eshopService.getById(id, PropertyRepair.class);
+    }
+    
+    @Path("propertyRepair/pendingStatus")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PropertyRepair> findPendingRepairs() {
+        return eshopService.findPendingRepairs(Status.PENDING);
+    }
+    @Path("propertyRepair/allPerProperty/{id}")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PropertyRepair> findAllByPropertyId(@PathParam("id") Long id) {
+        return eshopService.findAllByPropertyId(id);
+    }
+    @Path("propertyRepair/allPendingPerProperty/{id}")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PropertyRepair> findPendingRepairsForID(@PathParam("id") Long id) {
+        return eshopService.findPendingRepairsForID(Status.PENDING, id);
     }
 
     @Path("propertyRepair")

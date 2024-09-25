@@ -49,7 +49,7 @@ public class PropertyRepair implements BaseModel{
 
     private Date actualEndDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "property_id", nullable = false)
     private Property property;
 

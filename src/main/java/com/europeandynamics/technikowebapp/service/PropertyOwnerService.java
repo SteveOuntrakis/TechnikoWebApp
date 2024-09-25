@@ -1,17 +1,22 @@
 package com.europeandynamics.technikowebapp.service;
 
 import com.europeandynamics.technikowebapp.model.PropertyOwner;
+import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import lombok.extern.slf4j.Slf4j;
 import jakarta.inject.Named;
 import java.util.List;
 
+@Slf4j
+@RequestScoped
 public class PropertyOwnerService implements Service<PropertyOwner, Long> {
 
     @Inject
     @Named("PropertyOwnerRepo")
     private Repository<PropertyOwner, Long> repository;
-  
+
 
     public PropertyOwner findOwnerByUsername(String username) {
         try {
@@ -27,8 +32,8 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
     }
 
     @Override
-    public PropertyOwner getById(Long id,Class<PropertyOwner> propertyOwner) {
-        return repository.findById(id,propertyOwner);
+    public PropertyOwner getById(Long id, Class<PropertyOwner> propertyOwner) {
+        return repository.findById(id, propertyOwner);
     }
 
     @Override
@@ -42,7 +47,28 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
     }
 
     @Override
-    public boolean deleteById(Long id,Class<PropertyOwner> propertyOwner) {
-        return repository.deleteById(id,propertyOwner);
+    public boolean deleteById(Long id, Class<PropertyOwner> propertyOwner) {
+        return repository.deleteById(id, propertyOwner);
     }
+
+    @Override
+    public List<PropertyOwner> findPendingRepairsForID(Status status, Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<PropertyOwner> findPropertiesByUserID(Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<PropertyOwner> findPendingRepairs(Status status) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<PropertyOwner> findAllByPropertyId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

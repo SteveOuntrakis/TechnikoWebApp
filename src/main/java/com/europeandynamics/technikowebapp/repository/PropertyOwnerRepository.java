@@ -16,7 +16,6 @@ public class PropertyOwnerRepository extends RepositoryImpl<PropertyOwner, Long>
     @PersistenceContext(unitName = "Persistence")
     private EntityManager entityManager;
 
-    @Override
     @Transactional
     public List<PropertyOwner> findAllByUsername(String username) {
         TypedQuery<PropertyOwner> query

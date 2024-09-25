@@ -32,7 +32,7 @@ public class Property implements BaseModel{
     @Column(nullable = false)
     private PropertyType propertyType;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "propertyOwner_id", nullable = false)  
     private PropertyOwner owner;
 

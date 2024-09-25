@@ -1,10 +1,12 @@
 package com.europeandynamics.technikowebapp.repository;
 
 import com.europeandynamics.technikowebapp.model.BaseModel;
+import com.europeandynamics.technikowebapp.model.enums.Status;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,8 +61,37 @@ public class RepositoryImpl<T, K> implements Repository<T, K> {
     }
 
     @Override
-    public List<T> findAllByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    } 
+    public List<T> findByUserId(K userId) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 
+    @Override
+    public List<T> findByDateRange(Date startDate, Date endDate) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<T> findPendingRepairs(Status status) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<T> findAllByPropertyId(K propertyId) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<T> findPropertiesByUserID(K userId) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<T> findPendingRepairsForID(Status status, K id) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }    
+
+    @Override
+    public List<T> findAllByUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }

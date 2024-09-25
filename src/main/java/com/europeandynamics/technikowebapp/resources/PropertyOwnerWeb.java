@@ -36,7 +36,7 @@ public class PropertyOwnerWeb {
         return eshopService.getById(id, PropertyOwner.class);
     }
     
-    @Path("propertyOwner/{name}")
+    @Path("propertyOwner/getName/{name}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

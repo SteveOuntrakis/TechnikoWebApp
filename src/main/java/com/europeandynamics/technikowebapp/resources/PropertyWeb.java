@@ -35,6 +35,13 @@ public class PropertyWeb {
     public Property getById(@PathParam("id") Long id) {
         return eshopService.getById(id, Property.class);
     }
+    @Path("property/properties/{id}")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Property> findPropertiesByUserID(@PathParam("id") Long id) {
+        return eshopService.findPropertiesByUserID(id);
+    }
 
     @Path("property")
     @POST
@@ -48,7 +55,7 @@ public class PropertyWeb {
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean deleteById(@PathParam("id") long id) {
+    public boolean deleteById(@PathParam("id") Long id) {
         return eshopService.deleteById(id, Property.class);
-    }
+    }    
 }
