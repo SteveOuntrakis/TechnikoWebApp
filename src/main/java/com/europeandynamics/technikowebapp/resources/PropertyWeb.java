@@ -14,28 +14,28 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("")
+@Path("property")
 @Slf4j
 public class PropertyWeb {
 
     @Inject
     private Service<Property, Long> eshopService;
 
-    @Path("property")
+    @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Property> getAll() {
         return eshopService.getAll(Property.class);
     }
 
-    @Path("property/{id}")
+    @Path("/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Property getById(@PathParam("id") Long id) {
         return eshopService.getById(id, Property.class);
     }
-    @Path("property/properties/{id}")
+    @Path("/properties/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -43,7 +43,7 @@ public class PropertyWeb {
         return eshopService.findPropertiesByUserID(id);
     }
 
-    @Path("property")
+    @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,7 +51,7 @@ public class PropertyWeb {
         return eshopService.save(property);
     }
 
-    @Path("property/{id}")
+    @Path("/{id}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

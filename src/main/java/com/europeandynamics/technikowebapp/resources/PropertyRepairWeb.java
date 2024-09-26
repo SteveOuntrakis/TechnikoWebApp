@@ -15,21 +15,21 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("")
+@Path("propertyRepair")
 @Slf4j
 public class PropertyRepairWeb {
 
     @Inject
     private Service<PropertyRepair, Long> eshopService;
 
-    @Path("propertyRepair")
+    @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<PropertyRepair> getAll() {
         return eshopService.getAll(PropertyRepair.class);
     }
 
-    @Path("propertyRepair/{id}")
+    @Path("/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,21 +37,21 @@ public class PropertyRepairWeb {
         return eshopService.getById(id, PropertyRepair.class);
     }
     
-    @Path("propertyRepair/pendingStatus")
+    @Path("/pendingStatus")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<PropertyRepair> findPendingRepairs() {
         return eshopService.findPendingRepairs(Status.PENDING);
     }
-    @Path("propertyRepair/allPerProperty/{id}")
+    @Path("/allPerProperty/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<PropertyRepair> findAllByPropertyId(@PathParam("id") Long id) {
         return eshopService.findAllByPropertyId(id);
     }
-    @Path("propertyRepair/allPendingPerProperty/{id}")
+    @Path("/allPendingPerProperty/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -59,7 +59,7 @@ public class PropertyRepairWeb {
         return eshopService.findPendingRepairsForID(Status.PENDING, id);
     }
 
-    @Path("propertyRepair")
+    @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,7 +67,7 @@ public class PropertyRepairWeb {
         return eshopService.save(propertyRepair);
     }
 
-    @Path("propertyRepair/{id}")
+    @Path("/{id}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

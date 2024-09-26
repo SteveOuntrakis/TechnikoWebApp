@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,17 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
     public List<T> findAll(Class<T> t) {
         try {
             TypedQuery<T> query = entityManager.createQuery("from " + t.getName(), t);
-            return query.getResultList();
-        }catch (Exception e) {
-            throw new DatabaseOperationException("save",  t.getClass().toString(), e);
+            List<T> list = query.getResultList();
+            List<T> newList = new ArrayList<>();
+            for (T value : list) {
+                if (value != null && !value.isDeleted()) {
+                    newList.add(value);
+                }
+            }
+
+            return newList;
+        } catch (Exception e) {
+            throw new DatabaseOperationException("save", t.getClass().toString(), e);
         }
 
     }
@@ -47,31 +56,32 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
     @Override
     @Transactional
     public <T extends BaseModel> T save(T t) {
-        try{
-             if (t.getId() == null) {
-            entityManager.persist(t);
-        } else {
-            t = entityManager.merge(t);
-        }
-        return t;
-        }catch (Exception e) {
+        try {
+            if (t.getId() == null) {
+                entityManager.persist(t);
+            } else {
+                t = entityManager.merge(t);
+            }
+            return t;
+        } catch (Exception e) {
             throw new DatabaseOperationException("save", t.getClass().toString(), e);
         }
-       
+
     }
+
     @Override
     @Transactional
-    public boolean deleteById(K id , Class<T> entityClass) {
-        return setDeletedPostById(id,entityClass, true);
+    public boolean deleteById(K id, Class<T> entityClass) {
+        return setDeletedPostById(id, entityClass, true);
     }
-    
+
     @Override
     @Transactional
-    public boolean undeletePostById(K id , Class<T> entityClass) {
-        return setDeletedPostById(id,entityClass, false);
+    public boolean undeletePostById(K id, Class<T> entityClass) {
+        return setDeletedPostById(id, entityClass, false);
     }
-    
-    private boolean setDeletedPostById(K id, Class<T> entityClass,boolean deleted) {
+
+    private boolean setDeletedPostById(K id, Class<T> entityClass, boolean deleted) {
 
         T persistentInstance = entityManager.find(entityClass, id);
         if (persistentInstance != null) {

@@ -16,22 +16,22 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("")
+@Path("propertyOwner")
 @Slf4j
 public class PropertyOwnerWeb {
 
     @Inject
     private Service<PropertyOwner, Long> eshopService;
 
-    @Path("propertyOwner")
+    @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"ADMIN", "PROPERTY_OWNER"})
+    //@RolesAllowed({"ADMIN", "PROPERTY_OWNER"}) <= add this for Basic Auth
     public List<PropertyOwner> getAll() {
         return eshopService.getAll(PropertyOwner.class);
     }
 
-    @Path("propertyOwner/{id}")
+    @Path("/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +39,7 @@ public class PropertyOwnerWeb {
         return eshopService.getById(id, PropertyOwner.class);
     }
     
-    @Path("propertyOwner/getName/{name}")
+    @Path("/getName/{name}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,7 +47,7 @@ public class PropertyOwnerWeb {
         return eshopService.findOwnerByUsername(username);
     }
 
-    @Path("propertyOwner")
+    @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ public class PropertyOwnerWeb {
         return eshopService.save(propertyOwner);
     }
 
-    @Path("propertyOwner/{id}")
+    @Path("/{id}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

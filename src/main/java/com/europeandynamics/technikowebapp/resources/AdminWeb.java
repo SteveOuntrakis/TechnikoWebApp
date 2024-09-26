@@ -16,22 +16,22 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
-@Path("")
+@Path("admin")
 @Slf4j
 public class AdminWeb {
 
     @Inject
     private Service<Admin, Long> eshopService;
 
-    @Path("admin")
+    @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)     
-    @RolesAllowed("ADMIN")
+    //@RolesAllowed("ADMIN") <= add this for Basic Auth
     public List<Admin> getAll() {
         return eshopService.getAll(Admin.class);
     }
 
-    @Path("admin/{id}")
+    @Path("/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +39,7 @@ public class AdminWeb {
         return eshopService.getById(id, Admin.class);
     }
 
-    @Path("admin")
+    @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,7 +47,7 @@ public class AdminWeb {
         return eshopService.save(admin);
     }
 
-    @Path("admin/{adminId}")
+    @Path("/{adminId}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
