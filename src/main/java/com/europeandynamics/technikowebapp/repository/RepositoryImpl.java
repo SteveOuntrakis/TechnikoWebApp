@@ -28,7 +28,7 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
             }
             return null;
         } catch (Exception e) {
-            log.debug("An exception occured");
+            log.debug(e.getMessage());
             return null;
         }
     }
@@ -48,6 +48,7 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
 
             return newList;
         } catch (Exception e) {
+            log.debug(e.getMessage());
             throw new DatabaseOperationException("save", t.getClass().toString(), e);
         }
 
@@ -64,6 +65,7 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
             }
             return t;
         } catch (Exception e) {
+            log.debug(e.getMessage());
             throw new DatabaseOperationException("save", t.getClass().toString(), e);
         }
 

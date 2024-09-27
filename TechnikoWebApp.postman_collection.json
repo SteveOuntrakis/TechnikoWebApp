@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "34636b13-f486-41d5-830e-f13927606d1e",
+		"name": "TechnikoWebApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9507419"
+	},
+	"item": [
+		{
+			"name": "AdminRequests",
+			"item": [
+				{
+					"name": "GetAllAdmins",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostNewAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Stevoun\",\r\n    \"email\": \"Stef6543@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Techniko/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAdmin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/admin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAdminById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/admin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyOwnerRequests",
+			"item": [
+				{
+					"name": "GetAllPropertyOwners",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPropertyOwnerByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyOwner/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyOwner",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPropertyOwner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\" : \"Kolimvari\",\r\n    \"email\" : \"sountrakis@gmail.com\",\r\n    \"name\": \"Stefanos\",\r\n    \"password\" : \"1234\",\r\n    \"phoneNumber\": \"6912345678\",\r\n    \"surname\" : \"Ountrakis\",\r\n    \"username\": \"Stevoun\",\r\n    \"vatNumber\" : \"136403877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyOwner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPropertyOwnerByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyOwner/getName/Stevoun",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyOwner",
+								"getName",
+								"Stevoun"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyRequests",
+			"item": [
+				{
+					"name": "GetAllProperties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/property",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPropertyById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/property/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"property",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddProperty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"Chania\",\r\n    \"yearOfConstruction\": 1970,\r\n    \"propertyType\": 0,\r\n    \"owner\": {\r\n        \"id\": 1,\r\n        \"vatNumber\": \"136403877\",\r\n        \"name\": \"Stefanos\",\r\n        \"surname\": \"Ountrakis\",\r\n        \"address\": \"Kolimvari\",\r\n        \"phoneNumber\": \"6912345678\",\r\n        \"email\": \"sountrakis@gmail.com\",\r\n        \"username\": \"Stevoun\",\r\n        \"password\": \"1234\",\r\n        \"properties\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Techniko/property",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"property"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPropertiesByUserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/property/properties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"property",
+								"properties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyRepairsRequests",
+			"item": [
+				{
+					"name": "GetAllPropertyRepairs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPropertyRepairById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPropertyRepair",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"repairType\": 0,\r\n    \"shortDescription\": \"Air conditioner not working\",\r\n    \"dateSubmitted\": \"2024-09-19\",\r\n    \"description\": \"AC unit has stopped cooling the house\",\r\n    \"proposedStartDate\": \"2024-09-20\",\r\n    \"proposedEndDate\": \"2024-09-21\",\r\n    \"proposedCost\": 300.0,\r\n    \"ownerAcceptance\": false,\r\n    \"status\": 0,\r\n    \"property\": {\r\n        \"id\": 1,\r\n        \"address\": \"Chania\",\r\n        \"yearOfConstruction\": 1970,\r\n        \"propertyType\": \"HOUSE\",\r\n        \"owner\": {\r\n            \"id\": 1,\r\n            \"vatNumber\": \"136403877\",\r\n            \"name\": \"Stefanos\",\r\n            \"surname\": \"Ountrakis\",\r\n            \"address\": \"Kolimvari\",\r\n            \"phoneNumber\": \"6912345678\",\r\n            \"email\": \"sountrakis@gmail.com\",\r\n            \"username\": \"Stevoun\",\r\n            \"password\": \"1234\",\r\n            \"properties\": null\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPendingStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair/pendingStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair",
+								"pendingStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllRepairsByPropertyID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair/allPerProperty/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair",
+								"allPerProperty",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindAllPendingRepairsByPropertyID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyRepair/allPendingPerProperty/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyRepair",
+								"allPendingPerProperty",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LoginPage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"Stevoun\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/Techniko/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Techniko",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

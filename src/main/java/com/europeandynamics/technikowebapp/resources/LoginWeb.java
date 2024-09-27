@@ -28,6 +28,7 @@ public class LoginWeb {
     @Inject
     private PropertyOwnerService propertyOwnerService;
 
+    @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
