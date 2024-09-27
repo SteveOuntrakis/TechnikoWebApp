@@ -20,7 +20,7 @@ public class PropertyRepository extends RepositoryImpl<Property, Long> {
     public List<Property> findPropertiesByUserID(Long userId) {
         TypedQuery<Property> query
                 = entityManager.createQuery("from " + Property.class.getName()
-                        + " where id = :user_id ",
+                        + " where owner.id = :user_id ",
                         Property.class)
                         .setParameter("user_id", userId);
         return query.getResultList();
