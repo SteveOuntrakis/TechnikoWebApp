@@ -46,4 +46,4 @@ In The project there are some nice to have features which they are implemented:
  
 ## API:
 
-- All the Api calls are contained in the TechnikoWebApp.postman_collection.json. You may import this file to your Postman and have every request you need in your Project.
+- All the Api calls are contained in the [`TechnikoWebApp.postman_collection.json`](https://github.com/SteveOuntrakis/TechnikoWebApp/blob/main/TechnikoWebApp.postman_collection.json). You may import this file to your Postman and have every request you need in your Project.
