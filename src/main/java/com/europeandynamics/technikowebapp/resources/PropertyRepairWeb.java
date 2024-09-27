@@ -4,6 +4,7 @@ import com.europeandynamics.technikowebapp.model.PropertyRepair;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.service.Service;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -37,21 +38,21 @@ public class PropertyRepairWeb {
         return eshopService.getById(id, PropertyRepair.class);
     }
     
-    @Path("/pendingStatus")
+    @Path("/pending")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<PropertyRepair> findPendingRepairs() {
         return eshopService.findPendingRepairs(Status.PENDING);
     }
-    @Path("/allPerProperty/{id}")
+    @Path("/property/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<PropertyRepair> findAllByPropertyId(@PathParam("id") Long id) {
         return eshopService.findAllByPropertyId(id);
     }
-    @Path("/allPendingPerProperty/{id}")
+    @Path("/pending/{id}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,7 +65,15 @@ public class PropertyRepairWeb {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PropertyRepair save(PropertyRepair propertyRepair) {
-        return eshopService.save(propertyRepair);
+        return eshopService.save(propertyRepair,null);
+    }
+    
+    @Path("/{id}")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public PropertyRepair update(@Valid PropertyRepair propertyRepair,@PathParam("id") long id) {
+        return eshopService.save(propertyRepair,id);
     }
 
     @Path("/{id}")

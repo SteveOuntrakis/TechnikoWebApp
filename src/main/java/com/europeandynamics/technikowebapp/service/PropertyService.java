@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
+import com.europeandynamics.technikowebapp.exception.RepositoryException;
 import com.europeandynamics.technikowebapp.model.Property;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
@@ -34,10 +35,14 @@ public class PropertyService implements Service<Property, Long> {
     }
 
     @Override
-    public Property save(Property property) {
-        return repository.save(property);
+    public Property save(Property property,Long id) {
+        try {
+            return repository.save(property,id);
+        } catch (RepositoryException e) {
+            throw new RepositoryException(e.getMessage());
+        }
     }
-
+    
     @Override
     public boolean deleteById(Long id, Class<Property> property) {
         return repository.deleteById(id, property);

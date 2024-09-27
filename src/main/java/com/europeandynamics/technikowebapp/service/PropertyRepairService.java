@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
+import com.europeandynamics.technikowebapp.exception.RepositoryException;
 import com.europeandynamics.technikowebapp.model.PropertyRepair;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
@@ -45,8 +46,12 @@ public class PropertyRepairService implements Service<PropertyRepair, Long> {
     }
 
     @Override
-    public PropertyRepair save(PropertyRepair propertyRepair) {
-        return repository.save(propertyRepair);
+    public PropertyRepair save(PropertyRepair propertyRepair,Long id) {
+        try {
+            return repository.save(propertyRepair,id);
+        } catch (RepositoryException e) {
+            throw new RepositoryException(e.getMessage());
+        }
     }
 
     @Override

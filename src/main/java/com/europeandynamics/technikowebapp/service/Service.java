@@ -14,8 +14,8 @@ public interface Service<T, K> {
 
     List<T> getAll(Class<T> entityClass);
 
-    T save(T t);
-
+    T save(T t,K id);
+    
     boolean deleteById(K id, Class<T> entityClass);
     
     boolean undeleteById(K id, Class<T> entityClass);

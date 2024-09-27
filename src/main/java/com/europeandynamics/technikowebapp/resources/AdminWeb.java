@@ -2,7 +2,6 @@ package com.europeandynamics.technikowebapp.resources;
 
 import com.europeandynamics.technikowebapp.model.Admin;
 import com.europeandynamics.technikowebapp.service.Service;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -44,9 +43,17 @@ public class AdminWeb {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Admin save(@Valid Admin admin) {
-        return eshopService.save(admin);
+        return eshopService.save(admin,null);
     }
-
+    
+    @Path("/{id}")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Admin update(@Valid Admin admin,@PathParam("id") long id) {
+        return eshopService.save(admin,id);
+    }
+    
     @Path("/{adminId}")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)

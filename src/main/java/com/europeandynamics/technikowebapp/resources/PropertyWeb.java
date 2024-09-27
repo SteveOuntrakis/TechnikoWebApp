@@ -2,6 +2,7 @@ package com.europeandynamics.technikowebapp.resources;
 
 import com.europeandynamics.technikowebapp.model.Property;
 import com.europeandynamics.technikowebapp.service.Service;
+import jakarta.validation.Valid;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -48,7 +49,15 @@ public class PropertyWeb {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Property save(Property property) {
-        return eshopService.save(property);
+        return eshopService.save(property,null);
+    }
+    
+    @Path("/{id}")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Property update(@Valid Property property,@PathParam("id") long id) {
+        return eshopService.save(property,id);
     }
 
     @Path("/{id}")

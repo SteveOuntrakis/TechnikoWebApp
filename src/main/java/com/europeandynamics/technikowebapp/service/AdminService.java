@@ -53,14 +53,14 @@ public class AdminService implements Service<Admin, Long> {
     }
 
     @Override
-    public Admin save(Admin admin) {
+    public Admin save(Admin admin,Long id) {
         try {
-            return repository.save(admin);
+            return repository.save(admin,id);
         } catch (RepositoryException e) {
             throw new RepositoryException(e.getMessage());
         }
     }
-
+    
     @Override
     public boolean deleteById(Long id, Class<Admin> admin) {
         return repository.deleteById(id, admin);

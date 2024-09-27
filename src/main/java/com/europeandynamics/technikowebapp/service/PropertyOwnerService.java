@@ -1,5 +1,6 @@
 package com.europeandynamics.technikowebapp.service;
 
+import com.europeandynamics.technikowebapp.exception.RepositoryException;
 import com.europeandynamics.technikowebapp.model.PropertyOwner;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import com.europeandynamics.technikowebapp.repository.Repository;
@@ -25,7 +26,7 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
             return null;
         }
     }
-
+    
     public boolean validatePropertyOwnerPassword(String password, PropertyOwner owner) {
         return password.equals(owner.getPassword());
     }
@@ -41,8 +42,12 @@ public class PropertyOwnerService implements Service<PropertyOwner, Long> {
     }
 
     @Override
-    public PropertyOwner save(PropertyOwner propertyOwner) {
-        return repository.save(propertyOwner);
+    public PropertyOwner save(PropertyOwner propertyOwner,Long id) {
+        try {
+            return repository.save(propertyOwner,id);
+        } catch (RepositoryException e) {
+            throw new RepositoryException(e.getMessage());
+        }
     }
 
     @Override

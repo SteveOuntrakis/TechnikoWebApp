@@ -56,11 +56,12 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
 
     @Override
     @Transactional
-    public <T extends BaseModel> T save(T t) {
+    public <K extends Long> T save(T t, K id) {
         try {
-            if (t.getId() == null) {
+            if (id == null) {
                 entityManager.persist(t);
             } else {
+                t.setId(id);
                 t = entityManager.merge(t);
             }
             return t;
@@ -70,7 +71,7 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
         }
 
     }
-
+    
     @Override
     @Transactional
     public boolean deleteById(K id, Class<T> entityClass) {
@@ -129,4 +130,5 @@ public class RepositoryImpl<T extends BaseModel, K> implements Repository<T, K> 
     public List<T> findAllByUsername(String username) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

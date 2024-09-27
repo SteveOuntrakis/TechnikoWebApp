@@ -39,7 +39,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"Stevoun\",\r\n    \"email\": \"Stef6543@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"stefanos\",\r\n    \"email\": \"Stef6543@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -87,6 +87,36 @@
 					"request": {
 						"method": "GET",
 						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Techniko/admin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"stefanos\",\r\n    \"email\": \"Stef6543@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/Techniko/admin/1",
 							"protocol": "http",
@@ -187,7 +217,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Techniko/propertyOwner/getName/Stevoun",
+							"raw": "http://localhost:8080/Techniko/propertyOwner/name/Stevoun",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -196,8 +226,38 @@
 							"path": [
 								"Techniko",
 								"propertyOwner",
-								"getName",
+								"name",
 								"Stevoun"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePropertyOwner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\" : \"Kolimvari\",\r\n    \"email\" : \"sountrakis@gmail.com\",\r\n    \"name\": \"Stefanos\",\r\n    \"password\" : \"1234\",\r\n    \"phoneNumber\": \"6912345678\",\r\n    \"surname\" : \"Ountrakis\",\r\n    \"username\": \"Stevoun\",\r\n    \"vatNumber\" : \"136403877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Techniko/propertyOwner/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Techniko",
+								"propertyOwner",
+								"1"
 							]
 						}
 					},
@@ -388,7 +448,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Techniko/propertyRepair/pendingStatus",
+							"raw": "http://localhost:8080/Techniko/propertyRepair/pending",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -397,7 +457,7 @@
 							"path": [
 								"Techniko",
 								"propertyRepair",
-								"pendingStatus"
+								"pending"
 							]
 						}
 					},
@@ -409,7 +469,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Techniko/propertyRepair/allPerProperty/1",
+							"raw": "http://localhost:8080/Techniko/propertyRepair/property/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -418,7 +478,7 @@
 							"path": [
 								"Techniko",
 								"propertyRepair",
-								"allPerProperty",
+								"property",
 								"1"
 							]
 						}
@@ -431,7 +491,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Techniko/propertyRepair/allPendingPerProperty/1",
+							"raw": "http://localhost:8080/Techniko/propertyRepair/pending/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -440,7 +500,7 @@
 							"path": [
 								"Techniko",
 								"propertyRepair",
-								"allPendingPerProperty",
+								"pending",
 								"1"
 							]
 						}
@@ -456,7 +516,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"Stevoun\",\r\n    \"password\" : \"123456\"\r\n}",
+					"raw": "{\r\n    \"username\" : \"Stevoun\",\r\n    \"password\" : \"1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

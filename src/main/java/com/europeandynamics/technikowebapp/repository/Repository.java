@@ -1,6 +1,5 @@
 package com.europeandynamics.technikowebapp.repository;
 
-import com.europeandynamics.technikowebapp.model.BaseModel;
 import com.europeandynamics.technikowebapp.model.enums.Status;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +9,8 @@ public interface Repository<T, K> {
     T findById(K id, Class<T> entityClass);
 
     List<T> findAll(Class<T> entityClass);
-
-    <T extends BaseModel> T save(T t);
+    
+    <K extends Long> T save(T t, K id);
 
     boolean deleteById(K id, Class<T> entityClass);
     
