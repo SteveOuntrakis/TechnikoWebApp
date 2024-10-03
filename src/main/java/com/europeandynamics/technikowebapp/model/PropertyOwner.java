@@ -51,7 +51,7 @@ public class PropertyOwner implements BaseModel{
     @Column(nullable = false)
     private boolean deleted = false;
 
-    @OneToMany(mappedBy = "owner", orphanRemoval = true)
+    @OneToMany(mappedBy = "owner")
     @JsonIgnore
     private Set<Property> properties;
 }

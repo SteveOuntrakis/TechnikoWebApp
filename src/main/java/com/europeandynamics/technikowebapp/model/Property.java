@@ -32,14 +32,13 @@ public class Property implements BaseModel {
     @Column(nullable = false)
     private PropertyType propertyType;
     
-    @Column(nullable = false)
     private boolean deleted = false;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "propertyOwner_id", nullable = false)
+    @JoinColumn(name = "propertyOwner_id")
     private PropertyOwner owner;
 
-    @OneToMany(mappedBy = "property", orphanRemoval = true)
+    @OneToMany(mappedBy = "property")
     @JsonIgnore
     private Set<PropertyRepair> repairs;
 }
